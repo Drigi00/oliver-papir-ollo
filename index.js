@@ -26,11 +26,15 @@ function megjelenit(){
     `
     jatekterElem[0].innerHTML=""
     jatekterElem[0].insertAdjacentHTML("beforeend",htmlKod)
+
     const jatekGombok= document.querySelectorAll(".gombok button")
+
     jatekGombok[0].addEventListener("click",kivalaszt)
+    jatekGombok[1].addEventListener("click",kivalaszt)
+    jatekGombok[2].addEventListener("click",kivalaszt)
 
 }
 
-function kivalaszt(){
-    console.log("kivalaszt")
+function kivalaszt(event){
+    console.log(event.target.id)
 }
