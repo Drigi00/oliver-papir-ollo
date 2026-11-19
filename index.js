@@ -45,10 +45,43 @@ function kivalaszt(event){
     
 }
 
-function gepValasztas(){
+function gepValasztas(jatekosTipp){
     const kep = document.querySelector("#gep img");
     let veletlen=Math.floor(Math.random()*3)
-    console.log(veletlen)
+    console.log("gép tippje", veletlen)
 
-
+    if (veletlen == 0){
+    kep.src = `kepek/ko.PNG`
+  }
+  else if(veletlen == 1){
+    kep.src = `kepek/papir.PNG`
+  }
+  else{
+    kep.src = `kepek/ollo.PNG`
+  }
+  ellenorzes(veletlen,jatekosTipp )
 }
+function ellenorzes(veletlen,jatekosTipp){
+
+    let eredmeny=""
+    let f1=(veletlen===0 && jatekosTipp==="papir")
+    let f2=(veletlen===1 && jatekosTipp==="ollo")
+    let f3=(veletlen===2 && jatekosTipp==="ko")
+
+    let f4=(veletlen===0 && jatekosTipp==="ko")
+    let f5=(veletlen===1 && jatekosTipp==="papir")
+    let f6=(veletlen===2 && jatekosTipp==="ollo")
+
+    if (f1 || f2 || f3){
+        eredmeny="Játékos nyert!"
+    }else if (f4 || f5 || f6){
+        eredmeny="Döntetlen!"
+    }else{
+        eredmeny="Gép nyert!"
+    }
+
+
+    const kiirElem=document.getElementById("gyoztes")
+    kiirElem.innerHTML=`<p>${eredmeny}</p>`;
+}
+
